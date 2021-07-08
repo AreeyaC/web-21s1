@@ -12,3 +12,5 @@ app.engine('hbs', expHbs({
   partialsDir: ['./views/partials', './views/layouts']
 }))
 
+// TODO later
+app.get('/', index)
