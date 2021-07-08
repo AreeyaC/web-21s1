@@ -1,6 +1,8 @@
+const express = require('express')
 const expHbs = require('express-handlebars')
 const { courseDetails } = require('./features/courseController')
 const { index } = require('./features/indexController')
+
 const app = express()
 
 // Templates
@@ -12,5 +14,14 @@ app.engine('hbs', expHbs({
   partialsDir: ['./views/partials', './views/layouts']
 }))
 
+// Middleware
+app.use(express.static('public'))
+
+// Routes
 // TODO later
 app.get('/', index)
+app.get('/course/:code', courseDetails)
+
+const PORT = 3000
+app.listen(PORT,
+  () => console.log(`Listening: http://localhost:${PORT}`))
