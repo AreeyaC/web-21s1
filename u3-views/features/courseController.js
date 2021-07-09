@@ -6,7 +6,12 @@ const courseDetails = (req, res) => {
 
   // left `course` = name in handlebars
   // right `course` = Js variable
-  res.render('course-details', { course: course })
+  res.render('course-details', {
+    course: course,
+    crumbs: [
+      { href: `/course/${courseCode}`, text: courseCode }
+    ]
+  })
 }
 
 const courseUnits = (req, res) => {
@@ -15,14 +20,27 @@ const courseUnits = (req, res) => {
 
   // left `units` = name in handlebars
   // right `course.units` = Js expression
-  res.render('course-units', { units: course.units })
+  res.render('course-units', {
+    course: course,
+    units: course.units,
+    crumbs: [
+      { href: `/courses/${courseCode}`, text: courseCode },
+      { href: `/courses/${courseCode}/units`, text: 'Units' }
+    ]
+  })
 }
 
 const courseStudents = (req, res) => {
   const courseCode = req.params.code
   const course = getCourse(courseCode)
 
-  res.render('course-Students', { course: course })
+  res.render('course-Students', {
+    course: course,
+    crumbs: [
+      { href: `/courses/${courseCode}`, text: courseCode },
+      { href: `/courses/${courseCode}/students`, text: 'Students' }
+    ]
+  })
 }
 
 module.exports = {
