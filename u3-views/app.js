@@ -18,12 +18,10 @@ app.engine('hbs', expHbs({
 app.use(express.static('public'))
 
 // Routes
-// TODO later
 app.get('/', index)
-app.get('/course/:code', courseDetails)
-app.get('/course/:code/units', courseUnits)
-app.get('/course/:code/students', courseStudents)
+app.get('/courses/:code', courseDetails)
+app.get('/courses/:code/units', courseUnits)
+app.get('/courses/:code/Students', courseStudents)
 
 const PORT = 3000
-app.listen(PORT,
-  () => console.log(`Listening: http://localhost:${PORT}`))
+app.listen(PORT, () => console.log(`Listening: http://localhost:${PORT}`))

@@ -5,7 +5,7 @@ const courses = {
     semester: 1,
     students: [
       'Bank', 'Chinjung', 'Jay', 'Jib', 'Joker',
-      'mook', 'Oat', 'Oil', 'Peet', 'Phun'
+      'Mook', 'Oat', 'Oil', 'Peet', 'Phun', 'Natto'
     ],
     units: [
       { id: 'U1', title: 'HTTP Request-Response' },
