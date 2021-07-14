@@ -1,4 +1,3 @@
-
 const { getVideo, getSuggestions } = require('../_services/fakeapi')
 
 const videosPlayer = (req, res) => {
