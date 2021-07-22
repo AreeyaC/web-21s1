@@ -11,19 +11,8 @@ const readCovidR = async (req, res) => {
 
     // 3. Response
     const payload = (await query)
-      .docs
-      .map(doc => doc.data())
-      .map(data => ({
-        date: data.date.toMillis(),
-        stateId: data.stateId,
-        stateName: data.stateName,
-        cases: data.cases,
-        casesNew: data.casesNew,
-        vaccineOne: data.vaccineOne,
-        vaccineOnePercent: data.vaccineOnePercent,
-        vaccineComplete: data.vaccineComplete,
-        vaccineCompletePercent: data.vaccineCompletePercent
-      }))
+      .docs.map(doc => doc.data())
+      .map(data => ({ date: data.date.toMillis(), stateId: data.stateId, stateName: data.stateName, cases: data.cases, casesNew: data.casesNew, vaccineOne: data.vaccineOne, vaccineOnePercent: data.vaccineOnePercent, vaccineComplete: data.vaccineComplete, vaccineCompletePercent: data.vaccineCompletePercent }))
 
     res.json({
       result: 'ok',
@@ -53,20 +42,7 @@ const readCovid = async (req, res) => {
     if (!snapshot.exists) { return res.status(404).json({ result: 'not found' }) }
 
     const { stateName, history } = snapshot.data()
-    const payload = {
-      stateId,
-      stateName,
-      history: history.map(item => ({
-        date: item.date.toMillis(),
-        cases: item.cases,
-        casesNew: item.casesNew,
-        vaccineOne: item.vaccineOne,
-        vaccineOnePercent: item.vaccineOnePercent,
-        vaccineComplete: item.vaccineComplete,
-        vaccineCompletePercent: item.vaccineCompletePercent
-      })
-      )
-    }
+    const payload = { stateId, stateName, history: history.map(item => ({ date: item.date.toMillis(), cases: item.cases, casesNew: item.casesNew, vaccineOne: item.vaccineOne, vaccineOnePercent: item.vaccineOnePercent, vaccineComplete: item.vaccineComplete, vaccineCompletePercent: item.vaccineCompletePercent })) }
 
     res.json({ result: 'ok', payload })
   } catch (err) {
