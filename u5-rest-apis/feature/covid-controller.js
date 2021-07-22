@@ -14,8 +14,8 @@ const readCovidR = async (req, res) => {
       .docs
       .map(doc => doc.data())
       .map(data => ({
-        stateId: data.stateId,
         date: data.date.toMillis(),
+        stateId: data.stateId,
         stateName: data.stateName,
         cases: data.cases,
         casesNew: data.casesNew,
