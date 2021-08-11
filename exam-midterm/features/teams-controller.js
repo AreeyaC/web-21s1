@@ -5,5 +5,5 @@ const teamCreateForm = async (req, res) => {
 }
 
 module.exports = {
-  teamCreateForm,
+  teamCreateForm
 }

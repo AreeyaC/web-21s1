@@ -4,6 +4,7 @@ const { json, urlencoded } = require('body-parser')
 
 const { index } = require('./features/index-controller')
 const { teamCreateForm } = require('./features/teams-controller')
+const { teamsList } = require('./features/country-controller')
 
 const app = express()
 
@@ -24,8 +25,9 @@ app.use(urlencoded({ extended: false }))
 // Routes
 app.get('/', index)
 
-// TODO: เขียนเส้นทางของคุณที่นี่ // Write your routes here
+// TODO: Write your route here // Write your routes here
 app.get('/teams/new', teamCreateForm)
+app.get('/teams/', teamsList)
 
 // General
 app.get('/images/:catchall', (_req, res) => res.redirect('/images/404.jpg'))
