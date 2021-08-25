@@ -37,6 +37,7 @@
     "inflight": "^1.0.6",
     "inherits": "^2.0.3",
     "ipaddr.js": "^1.9.1",
+    "lodash": "^4.17.21",
     "media-typer": "^0.3.0",
     "merge-descriptors": "^1.0.1",
     "methods": "^1.1.2",
@@ -82,7 +83,7 @@
     "nodemon": "^2.0.12"
   },
   "scripts": {
-    
+    "serve": "nodemon --inspect index.js -e js,html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
