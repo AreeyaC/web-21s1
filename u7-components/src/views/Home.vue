@@ -13,6 +13,7 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import VideoCard from './VideoCard.vue'
 import { getSuggestions } from '@/_services/fakeapi'
+
 @Component({ components: { VideoCard } })
 export default class Home extends Vue {
   videos = getSuggestions(30)
