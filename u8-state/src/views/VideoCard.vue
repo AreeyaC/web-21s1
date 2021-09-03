@@ -23,7 +23,11 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 
 @Component({ props: ['video'] })
-export default class VideoCard extends Vue { }
+export default class VideoCard extends Vue {
+  addToWatchLater (videoId: string): void {
+    this.$store.dispatch('addToWatchLater', videoId)
+  }
+}
 </script>
 
 <style scoped>

@@ -19,7 +19,9 @@ import VideoCard from './VideoCard.vue'
 
 @Component({ components: { VideoCard } })
 export default class VideoPlaylist extends Vue {
-  videos: Video[] = []
+  get videos (): Video[] {
+    return this.$store.getters.watchLaterFull
+  }
 }
 </script>
 
