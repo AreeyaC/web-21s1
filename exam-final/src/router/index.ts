@@ -24,9 +24,23 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/athletes/:athletesById',
+    name: 'AthleteCreate',
+    component: AthleteCreate
+  },
+  {
+    path: '/athletes/:athletesById',
+    name: 'AthleteDetails',
+    component: AthleteDetails
+  },
+  {
+    path: '/athletes/:athletesById',
+    name: 'AthleteList',
+    component: AthleteList
   }
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
