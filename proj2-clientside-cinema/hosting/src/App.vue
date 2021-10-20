@@ -17,7 +17,7 @@
 
         <template #end>
           <b-icon class="position-relative m-4" icon="map-marker-radius-outline "></b-icon>
-          <b-navbar-dropdown label="Phitsanulok">
+          <b-navbar-dropdown label="Phitsanulok" @click="changeLocation(location)">
                 <b-navbar-item href="#">
                     Bangkok
                 </b-navbar-item>
