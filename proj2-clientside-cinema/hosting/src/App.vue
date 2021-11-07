@@ -1,45 +1,60 @@
 <template>
-  <div id="app" class="has-background-light" >
-    <b-navbar class="navbar is-dark">
-        <template #brand>
-            <b-navbar-item tag="router-link" :to="{ path: '/' }">
-                <p class="is-size-3 has-text-weight-bold">BECinema</p>
-            </b-navbar-item>
-        </template>
-        <template #start>
-            <b-navbar-item href="/cinemas">
-                Cinemas
-            </b-navbar-item>
-            <b-navbar-item href="/films">
-                Films
-            </b-navbar-item>
-        </template>
+  <div id="app" class="has-background-light">
+    <!-- ADD NAVBAR HERE -->
+    <b-navbar class="is-dark" wrapper-class="container">
+      <template #brand>
+        <b-navbar-item
+          tag="router-link"
+          :to="{ name: 'Home' }"
+          class="is-size-5"
+        >
+          <p class="is-size-3 has-text-weight-bold">BECinema</p>
+        </b-navbar-item>
+      </template>
 
-        <template #end>
-          <b-icon class="position-relative m-4" icon="map-marker-radius-outline "></b-icon>
-          <b-navbar-dropdown label="Phitsanulok" @click="changeLocation(location)">
-                <b-navbar-item href="#">
-                    Bangkok
-                </b-navbar-item>
-                <b-navbar-item href="#">
-                    Chiang Mai
-                </b-navbar-item>
-                <b-navbar-item href="#">
-                    Phitsanulok
-                </b-navbar-item>
-            </b-navbar-dropdown>
-            <b-navbar-dropdown>
-              <template #label>
-                <img src="images\accounts\chaz.jpg"
-                alt="Chaz"
-                style="border-radius: 50%"/>
-                <p class="ml-2">Chaz</p>
-                </template>
-                <b-navbar-item href="/tickets">
-                    My Tickets
-                </b-navbar-item>
-            </b-navbar-dropdown>
-        </template>
+      <template #start>
+        <b-navbar-item tag="router-link" :to="{ name: 'CinemaList' }">
+          Cinemas
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'FilmList' }">
+          Films
+        </b-navbar-item>
+      </template>
+
+      <template #end>
+        <b-navbar-dropdown right
+          ><template #label>
+            <div style="user-select: none;">
+              <b-icon icon="map-marker-radius-outline" class="mr-2"></b-icon>
+              {{ $store.state.activeLocation }}
+            </div>
+          </template>
+          <b-navbar-item
+            v-for="location in $store.state.locations"
+            :key="location"
+            @click="$store.dispatch(`changeLocation`, location)"
+          >
+            {{ location }}
+          </b-navbar-item>
+        </b-navbar-dropdown>
+        <b-navbar-dropdown right>
+          <template #label>
+            <div style="user-select: none;">
+              <figure class="image mr-2">
+                <img
+                  src="/images/accounts/chaz.jpg"
+                  alt="Chaz"
+                  class="is-rounded"
+                />
+              </figure>
+              Chaz
+            </div>
+          </template>
+          <b-navbar-item tag="router-link" :to="{ name: 'Tickets' }">
+            My Tickets
+          </b-navbar-item>
+        </b-navbar-dropdown>
+      </template>
     </b-navbar>
 
     <div class="container py-5">
@@ -59,22 +74,20 @@
             <router-link
               :to="{
                 name: 'CinemaDetails',
-                params: { slug: 'phitsanulok-bec-auditorium' },
+                params: { slug: 'phitsanulok-bec-auditorium' }
               }"
             >
               Cinema Details
             </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'FilmList' }">
-              Film List
-            </router-link>
+            <router-link :to="{ name: 'FilmList' }"> Film List </router-link>
           </li>
           <li>
             <router-link
               :to="{
                 name: 'FilmDetails',
-                params: { slug: 'black-pink-movie' },
+                params: { slug: 'black-pink-movie' }
               }"
             >
               Film Details
@@ -85,17 +98,15 @@
               :to="{
                 name: 'Book',
                 params: {
-                  slug: 'phitsanulok-bec-auditorium,1,1628863200',
-                },
+                  slug: 'phitsanulok-bec-auditorium,1,1628863200'
+                }
               }"
             >
               Booking Form
             </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'Tickets' }">
-              My Tickets
-            </router-link>
+            <router-link :to="{ name: 'Tickets' }"> My Tickets </router-link>
           </li>
         </ol>
       </div>
@@ -108,7 +119,6 @@ html,
 body {
   height: 100%;
 }
-
 #app {
   min-height: 100%;
 }
@@ -116,31 +126,26 @@ body {
 
 <style lang="scss" scoped>
 @import './main.scss';
-
 .image {
   display: inline-block;
   vertical-align: bottom;
 }
-
 .layout-footer {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
 }
-
 .layout-footer ol {
   margin: 0;
   padding: 0 0 0 1rem;
   column-count: 3;
   column-gap: 2rem;
 }
-
 .layout-footer li {
   padding-left: 0.5rem;
   padding-top: 0.25rem;
 }
-
 .layout-footer ol a,
 .layout-footer ol a:hover {
   background: inherit;
